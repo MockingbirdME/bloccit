@@ -1,0 +1,30 @@
+<h1>New Advertisement</h1>
+
+<div class="row">
+  <div class="col-md-4">
+    <p>Guidelines for Advertisements</p>
+    <ul>
+      <li>Must be appropriate for all ages</li>
+      <li>Poster agrees to pay devon $100 per click on their Advertisement</li>
+      <li>All adds must include a price that will be honored</li>
+    </ul>
+  </div>
+  <div class="col-md-8">
+    <%= form_for @ad do |f| %>
+      <div class="form-group">
+        <%= f.label :title %>
+        <%= f.text_field :title, class: 'form-control', placeholder: "Ad Title Here" %>
+      </div>
+      <div class="form-group">
+        <%= f.label :body%>
+        <%= f.text_area :body, rows: 8, class: 'form-control', placeholder: "Ad Discription"%>
+      </div>
+      <div class="form-group">
+        <%= f.label :price%>
+        <%= f.number_field :title, class: 'form-control', placeholder: "Product Price" %>
+      </div>
+      <div class="form-group">
+        <%= f.submit "Save", class: 'btn btn-success' %>
+<%end%>
+      </div>
+  </div>
