@@ -14,7 +14,15 @@ posts = Post.all
     body: RandomData.random_paragraph
   )
 end
+
+10.times do
+  Question.create!(
+  title: RandomData.random_sentence,
+  body: RandomData.random_paragraph,
+  resolved: RandomData.random_boolean
+  )
+end
+
 puts "Seeding finished"
 puts "#{Post.count} posts created"
 puts "#{Comment.count} comments created"
-  
