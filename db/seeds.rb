@@ -23,6 +23,15 @@ posts = Post.all
     body: RandomData.random_paragraph
   )
 end
+
+50.times do
+  SponsoredPost.create!(
+  topic: topics.sample,
+  title: RandomData.random_sentence,
+  body: RandomData.random_paragraph
+  )
+end
+
 puts "Seeding finished"
 puts "#{Topic.count} topics created"
 puts "#{Post.count} posts created"
