@@ -1,7 +1,6 @@
 Rails.application.routes.draw do
-  get 'users/new'
 
-  get 'users/create'
+  post 'users/confirm'
 
   resources :topics do
       resources :posts, except: [:index]
