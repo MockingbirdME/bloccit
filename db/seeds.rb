@@ -40,6 +40,12 @@ admin = User.create!(
   password: 'rappecep',
   role: 'admin'
 )
+moderator = User.create!(
+  name: 'Moderator user',
+  email: 'moderator@bloc.io',
+  password: 'rappecep',
+  role: 'moderator'
+)
 member = User.create!(
   name: 'Memeber user',
   email: 'member@bloc.io',
