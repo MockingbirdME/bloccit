@@ -34,8 +34,18 @@ posts = Post.all
   )
 end
 
-user = User.first
-user.update_attributes!(email:"devon.henegar@gmail.com", password: "rappecep")
+admin = User.create!(
+  name: 'Admin user',
+  email: 'admin@bloc.io',
+  password: 'rappecep',
+  role: 'admin'
+)
+member = User.create!(
+  name: 'Memeber user',
+  email: 'member@bloc.io',
+  password: 'rappecep',
+  role: 'member'
+)
 
 puts "Seeding finished"
 puts "#{User.count} users created"
