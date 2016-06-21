@@ -2,6 +2,8 @@ require 'rails_helper'
 
 RSpec.describe User, type: :model do
   let(:user) { User.create!(name: "Bloccit User", email: "user@bloccit.com", password: "password") }
+  let(:new_user) {User.create!(name: "NEW User", email: "user2@bloccit.com", password: "password")}
+
   it { is_expected.to validate_presence_of(:name) }
   it { is_expected.to validate_length_of(:name).is_at_least(1) }
 
@@ -75,7 +77,7 @@ RSpec.describe User, type: :model do
   describe "#favorite_for(post)" do
     before do
       topic = Topic.create!(name: RandomData.random_sentence, description: RandomData.random_paragraph)
-      @post = topic.posts.create!(title: RandomData.random_sentence, body: RandomData.random_paragraph, user: user)
+      @post = topic.posts.create!(title: RandomData.random_sentence, body: RandomData.random_paragraph, user: new_user)
     end
     it "returns `nil` if the user has not favorited the post" do
       expect(user.favorite_for(@post)).to be_nil
@@ -84,6 +86,10 @@ RSpec.describe User, type: :model do
       favorite = user.favorites.where(post: @post).create
       expect(user.favorite_for(@post)).to eq(favorite)
     end
+    it "favorites a new post for the posting user" do
+      expect(new_user.favorite_for(@post)).to_not be_nil
+    end
   end
+
 
 end
