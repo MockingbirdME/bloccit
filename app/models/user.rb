@@ -3,6 +3,7 @@ class User < ActiveRecord::Base
   has_many :posts, dependent: :destroy    #I do not believe we should
   has_many :comments, dependent: :destroy #be making thse posts, comments, and
   has_many :votes, dependent: :destroy    #votes dependent on the user's continued existance
+  has_many :favorites, dependent: :destroy
 
   before_save { self.email = email.downcase if email.present? }
   before_save {self.role ||= :member}
@@ -19,4 +20,7 @@ class User < ActiveRecord::Base
 
   enum role: [:member, :admin]
 
+  def favorite_for(post)
+    favorites.where(post_id: post.id).first
+  end
 end
