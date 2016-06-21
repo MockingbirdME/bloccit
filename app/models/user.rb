@@ -1,7 +1,8 @@
 class User < ActiveRecord::Base
 
-  has_many :posts
-  has_many :comments
+  has_many :posts, dependent: :destroy    #I do not believe we should
+  has_many :comments, dependent: :destroy #be making thse posts, comments, and
+  has_many :votes, dependent: :destroy    #votes dependent on the user's continued existance
 
   before_save { self.email = email.downcase if email.present? }
   before_save {self.role ||= :member}
