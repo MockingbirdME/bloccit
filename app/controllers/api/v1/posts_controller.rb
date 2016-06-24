@@ -18,8 +18,8 @@ class Api::V1::PostsController < Api::V1::BaseController
 
     topic = Topic.find(params[:topic_id])
     post = topic.posts.build(post_params)
-    post.user = User.find_by(params[:user_id])
-    
+    post.user = @current_user
+
     if post.valid?
       render json: post, status: 201
     else
